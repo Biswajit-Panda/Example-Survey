@@ -83,6 +83,7 @@ def insert_data(conn, data):
 # Home Page
 @app.route('/')
 def home():
+    create_database()
     return render_template('index.html')
 
 # Prediction Function
@@ -112,5 +113,4 @@ def view_database():
     return render_template('showdata.html', data=rows)
 
 if __name__ == "__main__":
-    create_database()
     app.run(debug=True)
