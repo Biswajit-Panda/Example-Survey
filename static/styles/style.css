@@ -1,0 +1,92 @@
+/* body section */
+
+body {
+  font-family: "Anaheim";
+  font-size: 1.2em;
+  background-color: rgb(128, 234, 248);
+  color: rgb(36, 36, 36);
+}
+
+h1 {
+  text-align: center;
+}
+
+/* form style */
+
+form {
+  width: 60%;
+  margin: 0 auto;
+  background-color: rgb(249, 250, 239);
+  padding: 5rem;
+  border: 2px solid rgb(43, 43, 43);
+  border-radius: 2rem;
+}
+
+/* inside form */
+fieldset {
+  /* border-left: 1px solid rgb(73, 75, 74);
+  border-bottom: none;
+  border-top: none;
+  border-right: none; */
+  margin: 10px;
+}
+h3 {
+  margin: 0;
+}
+.rateblock {
+  text-align: left;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.outside_rate {
+  width: 20%;
+  margin: 0 auto;
+  height: 100px;
+}
+
+/* rating style */
+
+.rating {
+  width: 226px;
+  /* margin: 0 auto; */
+  font-size: 45px;
+  overflow: hidden;
+}
+.rating input {
+  float: right;
+  opacity: 0;
+  position: absolute;
+  display: unset;
+}
+
+.rating label {
+  float: right;
+  color: #aaa;
+  text-decoration: none;
+  -webkit-transition: color 0.4s;
+  -moz-transition: color 0.4s;
+  -o-transition: color 0.4s;
+  transition: color 0.4s;
+}
+.rating label:hover ~ label,
+.rating input:focus ~ label,
+.rating label:hover {
+  color: orange;
+  cursor: pointer;
+}
+
+/* Question Block */
+
+input,
+label {
+  display: block;
+}
+
+.questions label {
+  padding: 5%;
+  font-weight: 600;
+  font-size: 2vw;
+}
+
+/* Comment Section */

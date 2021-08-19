@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
+    <title>Survey</title>
+</head>
+<body>
+    <h1>Survey for Hospital</h1>
+
+    <form action="{{ url_for('submission')}}", method="POST">
+            <div class="rateblock"><h3>Rate Us:</h3>
+                <div class="rating">
+                    <input name="stars" id="e5" type="radio" value="5" required><label for="e5">☆</label>
+                    <input name="stars" id="e4" type="radio" value="4" required><label for="e4">☆</label>
+                    <input name="stars" id="e3" type="radio" value="3" required><label for="e3">☆</label>
+                    <input name="stars" id="e2" type="radio" value="2" required><label for="e2">☆</label>
+                    <input name="stars" id="e1" type="radio" value="1" required><label for="e1">☆</label>
+                </div>
+            </div>
+        
+        <fieldset class="questions">
+            <label for="question_1">Based on your complete experience with our medical care facility, how likely are you to recommend us to a friend or colleague?</label>
+            <input type="text" name="question_1" id="question_1" placeholder="Answer 1" required="required">
+            <label for="question_2">Did you have any issues arranging an appointment?</label>
+            <input type="text" name="question_2" id="question_2" placeholder="Answer 2" required="required">
+            <label for="question_3">How would you rate the professionalism of our staff? </label>
+            <input type="text" name="question_3" id="question_3" placeholder="Answer 3" required="required">
+            <label for="question_4">Are you currently covered under a health insurance plan?</label>
+            <input type="text" name="question_4" id="question_4" placeholder="Answer 4" required="required">
+            <label for="question_5">How would you rate the investigative diagnosis process that you underwent?</label>
+            <input type="text" name="question_5" id="question_5" placeholder="Answer 5" required="required">
+        </fieldset>
+            <label for="comment">Any Suggestion or Comments:</label>
+            <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+    
+            <button type="submit" class="btn">Submit</button>
+    </form>
+
+    
+</body>
+</html>
