@@ -94,11 +94,11 @@ def submission():
     all_data = tuple([x for x in request.form.values()])
     # all_data = (2 , 'abc', 'bcs', 'wer', 'rew', 'gdw', 'awx')
     # create a database connection
-    # conn = create_connection(DATABASE)
-    # # insert data into database
-    # insert_data(conn, all_data)
-    # # close database connection
-    # conn.close()
+    conn = create_connection(DATABASE)
+    # insert data into database
+    insert_data(conn, all_data)
+    # close database connection
+    conn.close()
 
     return render_template('success.html', data = all_data)
 
