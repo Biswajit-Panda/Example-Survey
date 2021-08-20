@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles/style1.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style1.css') }}">
     <title>Database Data</title>
 </head>
 <body>
-    <table>
+  <div class="table-wrapper">
+    <table class="fl-table">
+      <thead>
         <tr>
             <th> Id </th>
             <th> question_1 </th>
@@ -18,6 +22,8 @@
             <th> question_6 </th>
             <th> Comments </th>
         </tr>
+      </thead>
+      <tbody>
         {% for row in data %}
         <tr>
           <td> {{ row[0] }}</td>
@@ -30,5 +36,7 @@
           <td> {{ row[7] }}</td>
         </tr> 
         {% endfor %}
-      </table>
+      </tbody>
+    </table>
+  </div>
 </html>
