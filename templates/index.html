@@ -12,29 +12,71 @@
     <h1>Hospital Survey</h1>
 
     <form action="{{ url_for('submission')}}", method="POST">
-            <div class="rateblock"><h3>Rate Us:</h3>
-                <div class="rating">
-                    <input name="stars" id="e5" type="radio" value="5" required><label for="e5">☆</label>
-                    <input name="stars" id="e4" type="radio" value="4" required><label for="e4">☆</label>
-                    <input name="stars" id="e3" type="radio" value="3" required><label for="e3">☆</label>
-                    <input name="stars" id="e2" type="radio" value="2" required><label for="e2">☆</label>
-                    <input name="stars" id="e1" type="radio" value="1" required><label for="e1">☆</label>
-                </div>
-            </div>
+
+            <div class="rateblock"><h3>Rate Us:</h3>            
+<div class="star-source">
+    <svg>
+           <linearGradient x1="50%" y1="5.41294643%" x2="87.5527344%" y2="65.4921875%" id="grad">
+              <stop stop-color="#f1a45c" offset="0%"></stop>
+              <stop stop-color="#f1a45c" offset="60%"></stop>
+              <stop stop-color="#f1a45c" offset="100%"></stop>
+          </linearGradient>
+      <symbol id="star" viewBox="153 89 106 108">   
+        <polygon id="star-shape" stroke="url(#grad)" stroke-width="5" fill="currentColor" points="206 162.5 176.610737 185.45085 189.356511 150.407797 158.447174 129.54915 195.713758 130.842203 206 95 216.286242 130.842203 253.552826 129.54915 222.643489 150.407797 235.389263 185.45085"></polygon>
+      </symbol>
+  </svg>
+  
+  </div>
+  <div class="star-container">
+    <input type="radio" name="star" id="five" value="5">
+    <label for="five">
+      <svg class="star">
+        <use xlink:href="#star"/>
+      </svg>
+    </label>
+    <input type="radio" name="star" id="four" value="4">
+    <label for="four">
+      <svg class="star">
+        <use xlink:href="#star"/>
+      </svg>
+    </label>
+    <input type="radio" name="star" id="three" value="3">
+    <label for="three">
+      <svg class="star">
+        <use xlink:href="#star"/>
+      </svg>
+    </label>
+    <input type="radio" name="star" id="two" value="2">
+    <label for="two">
+      <svg class="star">
+        <use xlink:href="#star" />
+      </svg>
+    </label>
+    <input type="radio" name="star" id="one" value="1">
+    <label for="one">
+     <svg class="star">
+      <use xlink:href="#star" />
+     </svg>
+    </label>
+  
+  </div>
+</div>
+
+
         
         <fieldset class="questions">
-            <ol>
+            <ul>
             <li><label for="question_1">Based on your complete experience with our medical care facility, how likely are you to recommend us to a friend or colleague?</label></li>
-            <input type="text" name="question_1" id="question_1" placeholder="Answer 1" required="required">
+            <input type="text" name="question_1" id="question_1" placeholder="Type Here" required="required">
             <li><label for="question_2">Did you have any issues arranging an appointment?</label></li>
-            <input type="text" name="question_2" id="question_2" placeholder="Answer 2" required="required">
+            <input type="text" name="question_2" id="question_2" placeholder="Type Here" required="required">
             <li><label for="question_3">How would you rate the professionalism of our staff? </label></li>
-            <input type="text" name="question_3" id="question_3" placeholder="Answer 3" required="required">
+            <input type="text" name="question_3" id="question_3" placeholder="Type Here" required="required">
             <li><label for="question_4">Are you currently covered under a health insurance plan?</label></li>
-            <input type="text" name="question_4" id="question_4" placeholder="Answer 4" required="required">
+            <input type="text" name="question_4" id="question_4" placeholder="Type Here" required="required">
             <li><label for="question_5">How would you rate the investigative diagnosis process that you underwent?</label></li>
-            <input type="text" name="question_5" id="question_5" placeholder="Answer 5" required="required">
-        </ol>
+            <input type="text" name="question_5" id="question_5" placeholder="Type Here" required="required">
+        </ul>
         </fieldset>
             <label for="comment" class="button_head"><h3>Any Suggestions or Comments:</h3></label>
             <div class="comment">
