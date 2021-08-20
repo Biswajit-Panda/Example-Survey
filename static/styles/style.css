@@ -18,6 +18,7 @@ form {
   margin: 0 auto;
   background-color: rgb(249, 250, 239);
   padding: 5rem;
+  padding-top: 3rem;
   border: 2px solid rgb(43, 43, 43);
   border-radius: 2rem;
 }
@@ -30,13 +31,12 @@ fieldset {
   border-right: none; */
   margin: 10px;
 }
-h3 {
-  margin: 0;
-}
+
 .rateblock {
   text-align: left;
   width: 70%;
-  margin: 0 auto;
+  padding-left: 10px;
+  display: flex;
 }
 
 .outside_rate {
@@ -83,18 +83,102 @@ label {
   display: block;
 }
 
-.questions label {
-  padding: 5%;
+ol {
+  margin: 0 5%;
+}
+.questions label,
+li {
+  padding-top: 5%;
   font-weight: 600;
   font-size: 2vw;
+  padding-bottom: 1%;
+}
+
+li:first-child {
+  padding-top: 0;
+}
+
+.questions input:last-child {
+  margin-bottom: 10%;
+  /* color: red; */
 }
 
 .questions input {
-  width: 80%;
-  margin: 0 5%;
+  width: 90%;
   padding: 1%;
   font-weight: 600;
-  font-size: 2vw;
+  font-size: 1.5vw;
 }
 
 /* Comment Section */
+
+.comment {
+  /* text-decoration: none; */
+  /* border: 1px red solid; */
+  width: 70%;
+  margin: 0 auto;
+  padding: 0 3%;
+  font-weight: 600;
+  font-size: 1.5vw;
+}
+textarea {
+  width: 100%;
+  padding: 1px;
+}
+
+/* Button */
+.button_head {
+  padding-left: 15%;
+}
+
+.btn_area {
+  width: 70%;
+  /* margin: 10px auto; */
+  padding: 5%;
+  padding-top: 2%;
+}
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #d67153;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  position: absolute;
+  right: 30%;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.button:hover {
+  background-color: #f4511e;
+}

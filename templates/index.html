@@ -9,7 +9,7 @@
     <title>Survey</title>
 </head>
 <body>
-    <h1>Survey for Hospital</h1>
+    <h1>Hospital Survey</h1>
 
     <form action="{{ url_for('submission')}}", method="POST">
             <div class="rateblock"><h3>Rate Us:</h3>
@@ -23,21 +23,26 @@
             </div>
         
         <fieldset class="questions">
-            <label for="question_1">Based on your complete experience with our medical care facility, how likely are you to recommend us to a friend or colleague?</label>
+            <ol>
+            <li><label for="question_1">Based on your complete experience with our medical care facility, how likely are you to recommend us to a friend or colleague?</label></li>
             <input type="text" name="question_1" id="question_1" placeholder="Answer 1" required="required">
-            <label for="question_2">Did you have any issues arranging an appointment?</label>
+            <li><label for="question_2">Did you have any issues arranging an appointment?</label></li>
             <input type="text" name="question_2" id="question_2" placeholder="Answer 2" required="required">
-            <label for="question_3">How would you rate the professionalism of our staff? </label>
+            <li><label for="question_3">How would you rate the professionalism of our staff? </label></li>
             <input type="text" name="question_3" id="question_3" placeholder="Answer 3" required="required">
-            <label for="question_4">Are you currently covered under a health insurance plan?</label>
+            <li><label for="question_4">Are you currently covered under a health insurance plan?</label></li>
             <input type="text" name="question_4" id="question_4" placeholder="Answer 4" required="required">
-            <label for="question_5">How would you rate the investigative diagnosis process that you underwent?</label>
+            <li><label for="question_5">How would you rate the investigative diagnosis process that you underwent?</label></li>
             <input type="text" name="question_5" id="question_5" placeholder="Answer 5" required="required">
+        </ol>
         </fieldset>
-            <label for="comment">Any Suggestion or Comments:</label>
-            <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
-    
-            <button type="submit" class="btn">Submit</button>
+            <label for="comment" class="button_head"><h3>Any Suggestions or Comments:</h3></label>
+            <div class="comment">
+                <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+            </div>
+            <div class="btn_area">
+                <button type="submit" class="button"><span>Submit</span></button>
+            </div>
     </form>
 
     
