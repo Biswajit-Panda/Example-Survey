@@ -89,4 +89,12 @@ label {
   font-size: 2vw;
 }
 
+.questions input {
+  width: 80%;
+  margin: 0 5%;
+  padding: 1%;
+  font-weight: 600;
+  font-size: 2vw;
+}
+
 /* Comment Section */
