@@ -55,7 +55,7 @@ def create_database():
     
 
     # create a database connection
-    conn = create_connection(DATABASE)
+    conn = create_connection(DATABASE_URL)
 
     # create tables
     if conn is not None:
@@ -95,7 +95,7 @@ def submission():
     all_data = tuple([x for x in request.form.values()])
     # all_data = (2 , 'abc', 'bcs', 'wer', 'rew', 'gdw', 'awx')
     # create a database connection
-    conn = create_connection(DATABASE)
+    conn = create_connection(DATABASE_URL)
     # insert data into database
     insert_data(conn, all_data)
     # close database connection
@@ -105,7 +105,7 @@ def submission():
 
 @app.route('/view_database')
 def view_database():
-    conn = create_connection(DATABASE)
+    conn = create_connection(DATABASE_URL)
     cur = conn.cursor()
     cur.execute("SELECT * FROM survey LIMIT 10")
     rows = cur.fetchall()
