@@ -8,6 +8,7 @@ app = Flask(__name__)
 
 
 DATABASE = "surveysqlite.db"
+DATABASE_URL = "postgres://szncamievaihiu:52518d2fe20fceb36e2c882a90ec4189081f3afd16faee96fa40acea11b9dc3d@ec2-18-214-238-28.compute-1.amazonaws.com:5432/d7gprejmg7guvd"
 
 
 def create_connection(db_file):
