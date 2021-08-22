@@ -9,6 +9,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://szncamievaihiu:52518d2fe20fc
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+db.create_all()
 
 # database skeliton
 
@@ -113,5 +114,4 @@ def view_database():
 
 
 if __name__ == "__main__":
-    db.create_all()
     app.run(debug=True)
