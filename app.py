@@ -64,7 +64,7 @@ class Temp(db.Model):
         self.comment = comment
 
 
-db.create_all()
+# db.create_all()
 
 # Home Page
 
