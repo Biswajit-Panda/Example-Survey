@@ -83,13 +83,13 @@ def submission():
     '''
     if request.method == "POST":
         # all_data = tuple([x for x in request.form.values()])
-        rating = request.form('star')
-        q1 = request.form('question_1')
-        q2 = request.form('question_2')
-        q3 = request.form('question_3')
-        q4 = request.form('question_4')
-        q5 = request.form('question_5')
-        comment = request.form('comment')
+        rating = request.form['star']
+        q1 = request.form['question_1']
+        q2 = request.form['question_2']
+        q3 = request.form['question_3']
+        q4 = request.form['question_4']
+        q5 = request.form['question_5']
+        comment = request.form['comment']
 
         all_data = (rating, q1, q2, q3, q4, q5, comment)
 
