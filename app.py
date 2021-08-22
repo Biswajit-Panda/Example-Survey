@@ -1,77 +1,90 @@
 from flask import Flask, request, jsonify, render_template
-from flask_sqlalchemy import SQLAlchemy
+import sqlite3
+from sqlite3 import Error
 
 
 # Create the Flask app
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://szncamievaihiu:52518d2fe20fceb36e2c882a90ec4189081f3afd16faee96fa40acea11b9dc3d@ec2-18-214-238-28.compute-1.amazonaws.com:5432/d7gprejmg7guvd'
 
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
+DATABASE = "surveysqlite.db"
 
 
-# database skeliton
+def create_connection(db_file):
+    """ create a database connection to the SQLite database
+        specified by db_file
+    :param db_file: database file
+    :return: Connection object or None
+    """
+    conn = None
+    try:
+        conn = sqlite3.connect(db_file)
+        return conn
+    except Error as e:
+        print(e)
+
+    return conn
 
 
-# class UserDetails(db.Model):
-#     __tablename__ = 'user'
-#     id = db.Column(db.Integer, primary_key=True)
-#     email = db.Column(db.String(50), unique=True)
-#     name = db.Column(db.String(50))
-
-#     def __init__(self, email, name):
-#         self.email = email
-#         self.name = name
-
-
-# class Questions(db.Model):
-#     __tablename__ = 'question'
-#     id = db.Column(db.Integer, primary_key=True)
-#     qstn_id = db.Column(db.Integer)
-#     qstn_desc = db.Column(db.String(200))
-#     user_id = db.Column(db.Integer)
-#     time = db.Column(db.String(30))
-#     rating = db.Column(db.Integer)
-#     desc = db.Column(db.String(200))
-
-#     def __init__(self, qstn_id, qstn_desc, user_id, time, rating, desc):
-#         self.qstn_id = qstn_id
-#         self.qstn_desc = qstn_desc
-#         self.user_id = user_id
-#         self.time = time
-#         self.rating = rating
-#         self.desc = desc
+def create_table(conn, create_table_sql):
+    """ create a table from the create_table_sql statement
+    :param conn: Connection object
+    :param create_table_sql: a CREATE TABLE statement
+    :return:
+    """
+    try:
+        c = conn.cursor()
+        c.execute(create_table_sql)
+    except Error as e:
+        print(e)
 
 
-class Temp(db.Model):
-    __tablename__ = 'survey'
-    id = db.Column(db.Integer, primary_key=True)
-    rating = db.Column(db.String(200))
-    q1 = db.Column(db.String(200))
-    q2 = db.Column(db.String(200))
-    q3 = db.Column(db.String(200))
-    q4 = db.Column(db.String(200))
-    q5 = db.Column(db.String(200))
-    comment = db.Column(db.String(200))
+def create_database():
 
-    def __init__(self, rating, q1, q2, q3, q4, q5, comment):
-        self.rating = rating
-        self.q1 = q1
-        self.q2 = q2
-        self.q3 = q3
-        self.q4 = q4
-        self.q5 = q5
-        self.comment = comment
+    sql_create_survey_table = """ CREATE TABLE IF NOT EXISTS survey (
+                                        id integer PRIMARY KEY AUTOINCREMENT,
+                                        rating integer NOT NULL,
+                                        qstn1 text NOT NULL,
+                                        qstn2 text NOT NULL,
+                                        qstn3 text NOT NULL,
+                                        qstn4 text NOT NULL,
+                                        qstn5 text NOT NULL,
+                                        comment text
+                                    ); """
+
+    # create a database connection
+    conn = create_connection(DATABASE)
+
+    # create tables
+    if conn is not None:
+        # create survey table
+        create_table(conn, sql_create_survey_table)
+        # close database connection
+        conn.close()
+    else:
+        print("Error! cannot create the database connection.")
+
+    # close database connection
+    conn.close()
 
 
-# db.create_all()
+def insert_data(conn, data):
+    """
+    Create a new row into the survey table
+    :param conn:
+    :param data:
+    """
+    sql = ''' INSERT INTO survey(rating,qstn1,qstn2,qstn3,qstn4,qstn5,comment) VALUES(?,?,?,?,?,?,?) '''
+    cur = conn.cursor()
+    cur.execute(sql, data)
+    conn.commit()
 
 # Home Page
 
 
 @app.route('/')
 def home():
+    create_database()
     return render_template('index.html')
 
 # Prediction Function
@@ -82,35 +95,26 @@ def submission():
     '''
     For rendering results on HTML GUI
     '''
-    if request.method == "POST":
-        # all_data = tuple([x for x in request.form.values()])
-        rating = request.form['star']
-        q1 = request.form['question_1']
-        q2 = request.form['question_2']
-        q3 = request.form['question_3']
-        q4 = request.form['question_4']
-        q5 = request.form['question_5']
-        comment = request.form['comment']
+    all_data = tuple([x for x in request.form.values()])
+    # all_data = (2 , 'abc', 'bcs', 'wer', 'rew', 'gdw', 'awx')
+    # create a database connection
+    conn = create_connection(DATABASE)
+    # insert data into database
+    insert_data(conn, all_data)
+    # close database connection
+    conn.close()
 
-        all_data = (rating, q1, q2, q3, q4, q5, comment)
-
-        # if db.session.query(UserDetails).filter(UserDetails.email == email).count() == 0:
-        #     u_data = UserDetails(email, name)
-        #     db.session.add(u_data)
-        #     db.session.commit()
-        # else:
-        #     pass
-        t_data = Temp(rating, q1, q2, q3, q4, q5, comment)
-        db.session.add(t_data)
-        db.session.commit()
-
-        return render_template('success.html', data=all_data)
-    return render_template('success.html', data='Data not found')
+    return render_template('success.html', data=all_data)
 
 
 @app.route('/view_database')
 def view_database():
-    return render_template('showdata.html')
+    conn = create_connection(DATABASE)
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM survey LIMIT 10")
+    rows = cur.fetchall()
+    conn.close()
+    return render_template('showdata.html', data=rows)
 
 
 if __name__ == "__main__":
