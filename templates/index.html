@@ -4,89 +4,185 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self Assesment Survey</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="../static/styles/style.css">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
-    <title>Survey</title>
+    <link rel="icon" href="../static/images/logo.png">
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}">
 </head>
-<body>
-    <h1>Hospital Survey</h1>
-
-    <form action="{{ url_for('submission')}}", method="POST">
-
-            <div class="rateblock"><h3>Rate Us:</h3>            
-<div class="star-source">
-    <svg>
-           <linearGradient x1="50%" y1="5.41294643%" x2="87.5527344%" y2="65.4921875%" id="grad">
-              <stop stop-color="#f1a45c" offset="0%"></stop>
-              <stop stop-color="#f1a45c" offset="60%"></stop>
-              <stop stop-color="#f1a45c" offset="100%"></stop>
-          </linearGradient>
-      <symbol id="star" viewBox="153 89 106 108">   
-        <polygon id="star-shape" stroke="url(#grad)" stroke-width="5" fill="currentColor" points="206 162.5 176.610737 185.45085 189.356511 150.407797 158.447174 129.54915 195.713758 130.842203 206 95 216.286242 130.842203 253.552826 129.54915 222.643489 150.407797 235.389263 185.45085"></polygon>
-      </symbol>
-  </svg>
-  
-  </div>
-  <div class="star-container">
-    <input type="radio" name="star" id="five" value="5" required="required">
-    <label for="five">
-      <svg class="star">
-        <use xlink:href="#star"/>
-      </svg>
-    </label>
-    <input type="radio" name="star" id="four" value="4" required="required">
-    <label for="four">
-      <svg class="star">
-        <use xlink:href="#star"/>
-      </svg>
-    </label>
-    <input type="radio" name="star" id="three" value="3" required="required">
-    <label for="three">
-      <svg class="star">
-        <use xlink:href="#star"/>
-      </svg>
-    </label>
-    <input type="radio" name="star" id="two" value="2" required="required">
-    <label for="two">
-      <svg class="star">
-        <use xlink:href="#star" />
-      </svg>
-    </label>
-    <input type="radio" name="star" id="one" value="1" required="required">
-    <label for="one">
-     <svg class="star">
-      <use xlink:href="#star" />
-     </svg>
-    </label>
-  
-  </div>
-</div>
-
-
-        
-        <fieldset class="questions">
-            <ul>
-            <li><label for="question_1">Based on your complete experience with our medical care facility, how likely are you to recommend us to a friend or colleague?</label></li>
-            <input type="text" name="question_1" id="question_1" placeholder="Type Here" required="required">
-            <li><label for="question_2">Did you have any issues arranging an appointment?</label></li>
-            <input type="text" name="question_2" id="question_2" placeholder="Type Here" required="required">
-            <li><label for="question_3">How would you rate the professionalism of our staff? </label></li>
-            <input type="text" name="question_3" id="question_3" placeholder="Type Here" required="required">
-            <li><label for="question_4">Are you currently covered under a health insurance plan?</label></li>
-            <input type="text" name="question_4" id="question_4" placeholder="Type Here" required="required">
-            <li><label for="question_5">How would you rate the investigative diagnosis process that you underwent?</label></li>
-            <input type="text" name="question_5" id="question_5" placeholder="Type Here" required="required">
-        </ul>
-        </fieldset>
-            <label for="comment" class="button_head"><h3>Any Suggestions or Comments:</h3></label>
-            <div class="comment">
-                <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+<body><div class="d-flex align-items-center">
+  <img src="{{ url_for('static', filename='images/logo.png') }}" style="padding: 6px; width: 60px; height: 60px;" alt="logo">
+    <h3 class="lead" style="padding: 0 10px;">Self Assesment Survey</h3></div>
+    <nav class="navbar navbar-light dbr_navbar">
+        <div class="container-fluid">
+          <span class="navbar-brand mb-0 h1 text-white">Leadership</span>
+        </div>
+    </nav>
+    <form action="{{ url_for('submission') }}" method="POST">
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item content-pad">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button dbr_drop" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            User Details:
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <div class="d-flex">
+              <label for="u_name" class="form-label content-pad">Name:</label>
+              <input type="text", name="u_name", id="u_name" class="form-control" required>
             </div>
-            <div class="btn_area">
-                <button type="submit" class="button"><span>Submit</span></button>
+          <hr class="fancyLine6">
+            <div class="d-flex">
+              <label for="email" class="form-label content-pad">Email:</label>
+              <input type="email", name="email", id="email" class="form-control" required>
             </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item content-pad">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed dbr_drop" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Leadership and Principles:
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <div>
+              <label for="q01_01" class="form-label">I am living by Leadership Principles.</label><br>
+              <div class="d-flex">
+              <input type="text" name="q01_01" id="q01_01" class="form-control" required>
+            
+            <div class="rating"> 
+              <input type="radio" name="rating_01_01" value="5" id="01_01_5" required><label for="01_01_5">☆</label> 
+              <input type="radio" name="rating_01_01" value="4" id="01_01_4" required><label for="01_01_4">☆</label> 
+              <input type="radio" name="rating_01_01" value="3" id="01_01_3" required><label for="01_01_3">☆</label> 
+              <input type="radio" name="rating_01_01" value="2" id="01_01_2" required><label for="01_01_2">☆</label> 
+              <input type="radio" name="rating_01_01" value="1" id="01_01_1" required><label for="01_01_1">☆</label>
+              </div>
+            </div>
+            </div>
+          <hr class="fancyLine6">
+            <div>
+              <label for="q01_02" class="form-label">I am involving employees in holistic responsibility</label><br>
+              <div class="d-flex">
+              <input type="text" name="q01_02" id="q01_02" class="form-control" required>
+            
+            <div class="rating"> 
+              <input type="radio" name="rating_01_02" value="5" id="01_02_5" required><label for="01_02_5">☆</label> 
+              <input type="radio" name="rating_01_02" value="4" id="01_02_4" required><label for="01_02_4">☆</label> 
+              <input type="radio" name="rating_01_02" value="3" id="01_02_3" required><label for="01_02_3">☆</label> 
+              <input type="radio" name="rating_01_02" value="2" id="01_02_2" required><label for="01_02_2">☆</label> 
+              <input type="radio" name="rating_01_02" value="1" id="01_02_1" required><label for="01_02_1">☆</label>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="accordion-item content-pad">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed dbr_drop" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Other Questions:
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <div>
+              <label for="q02_01" class="form-label">Other Question 01</label><br>
+              <div class="d-flex">
+              <input type="text" name="q02_01" id="q02_01" class="form-control" required>
+            
+            <div class="rating"> 
+              <input type="radio" name="rating_02_01" value="5" id="02_01_5" required><label for="02_01_5">☆</label> 
+              <input type="radio" name="rating_02_01" value="4" id="02_01_4" required><label for="02_01_4">☆</label> 
+              <input type="radio" name="rating_02_01" value="3" id="02_01_3" required><label for="02_01_3">☆</label> 
+              <input type="radio" name="rating_02_01" value="2" id="02_01_2" required><label for="02_01_2">☆</label> 
+              <input type="radio" name="rating_02_01" value="1" id="02_01_1" required><label for="02_01_1">☆</label>
+              </div>
+            </div>
+            </div>
+          <hr class="fancyLine6">
+            <div>
+              <label for="q02_02" class="form-label">Other Question 02</label><br>
+              <div class="d-flex">
+              <input type="text" name="q02_02" id="q02_02" class="form-control" required>
+            
+            <div class="rating"> 
+              <input type="radio" name="rating_02_02" value="5" id="02_02_5" required><label for="02_02_5">☆</label> 
+              <input type="radio" name="rating_02_02" value="4" id="02_02_4" required><label for="02_02_4">☆</label> 
+              <input type="radio" name="rating_02_02" value="3" id="02_02_3" required><label for="02_02_3">☆</label> 
+              <input type="radio" name="rating_02_02" value="2" id="02_02_2" required><label for="02_02_2">☆</label> 
+              <input type="radio" name="rating_02_02" value="1" id="02_02_1" required><label for="02_02_1">☆</label>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+      <!-- <div class="accordion">
+        <div class="accordion-item">
+          <button class="btn btn-secondary dropdown-toggle dbr_drop shadow" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            User Details:
+          </button>
+          <ul class="dropdown-menu dbr_drop_box shadow" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+          <div class="dropdown-menu dbr_drop_box shadow">
+            <div>
+              <label for="u_name">Name:</label>
+              <input type="text", name="u_name", id="u_name" required>
+            </div>
+          <hr>
+            <div>
+              <label for="email">Email:</label>
+              <input type="email", name="email", id="email" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle dbr_drop shadow" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          Questions:
+        </button>
+        <div class="dropdown-menu dbr_drop_box shadow">
+          <div class="dropdown-item">
+            <label for="q01_01" class="form-label">I am living by Leadership Principles</label><br>
+            <input type="text", name="q01_01", id="q01_01" class="form-control" required>
+          </div>
+        <hr>
+          <div class="dropdown-item">
+            <label for="q01_02" class="form-label">I am involving employees in holistic responsibility</label><br>
+            <div class="d-flex">
+            <input type="text" name="q01_02" id="q01_02" class="form-control" required>
+          
+          <div class="rating"> 
+            <input type="radio" name="rating_1" value="5" id="5" required><label for="5">☆</label> 
+            <input type="radio" name="rating_1" value="4" id="4" required><label for="4">☆</label> 
+            <input type="radio" name="rating_1" value="3" id="3" required><label for="3">☆</label> 
+            <input type="radio" name="rating_1" value="2" id="2" required><label for="2">☆</label> 
+            <input type="radio" name="rating_1" value="1" id="1" required><label for="1">☆</label>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div> -->
+      <div class="btn_area">
+        <button type="submit" class="button"><span>Submit</span></button>
+    </div>
     </form>
-
-    
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 </html>
